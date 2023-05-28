@@ -10,9 +10,9 @@ function calcularImpuestos() {
     numeroFactura = prompt("Número de factura inválido. Ingrese un número de factura de 8 a 10 caracteres:");
   }
 
-  let unidades = parseInt(prompt("Ingrese la cantidad de unidades (máximo 100):"));
-  while (unidades < 1 || unidades > 100) {
-    unidades = parseInt(prompt("Cantidad de unidades inválida. Ingrese una cantidad de unidades entre 1 y 100:"));
+  let unidades = parseInt(prompt("Ingrese la cantidad de unidades, recuerde que si excede las 100 unidades deberá pagar penalización por exceso:"));
+  while (unidades < 1 || unidades > 120) {
+    unidades = parseInt(prompt("Cantidad de unidades inválida. Ingrese una cantidad de unidades entre 1 y 120:"));
   }
 
   let peso = parseInt(prompt("Ingrese el peso en gramos (máximo 2000 g):"));
@@ -20,7 +20,7 @@ function calcularImpuestos() {
     peso = parseInt(prompt("Peso inválido. Ingrese un peso entre 1 y 2000 gramos:"));
   }
 
-  let valorDeclarado = parseFloat(prompt("Ingrese el valor declarado: $"));
+  let valorDeclarado = parseFloat(prompt("Ingrese el valor declarado sin puntos ni comas: $"));
 
   let tiposProductos = [
     { nombre: "bijou", estampillado: false },
@@ -81,13 +81,13 @@ function calcularImpuestos() {
   }
 
   let impuestoPeso = 0;
-  if (peso > 1000 && peso < 1501) {
+  if (peso > 1500 && peso < 2001) {
     impuestoPeso = 0.18;
     console.log(`Deberá pagar una penalidad del ${impuestoPeso * 100}% por exceder los 1000 gramos.`);
   }
 
   let impuestoTotal = 0;
-  if (unidades > 100 && unidades < 151 && peso > 1000 && peso < 1501) {
+  if (unidades > 100 && unidades < 121 && peso > 1000 && peso < 2001) {
     impuestoTotal = 0.4;
     console.log(`Deberá pagar una penalidad del ${impuestoTotal * 100}% por exceder las 100 unidades y los 1000 gramos.`);
   }
